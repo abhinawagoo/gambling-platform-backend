@@ -5,7 +5,10 @@ module.exports = {
   PORT: process.env.PORT || 5000,
   NODE_ENV: process.env.NODE_ENV || "development",
 
-  // Database
+  // Database - connection string (for production)
+  DATABASE_URL: process.env.DATABASE_URL,
+
+  // Database - individual components (for development)
   DB_HOST: process.env.DB_HOST || "localhost",
   DB_USER: process.env.DB_USER || "postgres",
   DB_PASSWORD: process.env.DB_PASSWORD || "password",
@@ -15,7 +18,7 @@ module.exports = {
   JWT_SECRET: process.env.JWT_SECRET || "your-secret-key",
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || "24h",
 
-  // Razorpay (for payments)
+  // Razorpay
   RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
   RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
 };

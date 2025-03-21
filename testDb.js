@@ -1,7 +1,19 @@
-const sequelize = require("./config/db");
-const Bet = require("./models/bet");
+require("dotenv").config();
+const { Sequelize } = require("sequelize");
+
+const databaseUrl = process.env.DATABASE_URL;
+
+if (!databaseUrl) {
+  console.error("❌ DATABASE_URL is not defined. Check your .env file.");
+  process.exit(1); // Stop execution if DATABASE_URL is missing
+}
+
+const sequelize = new Sequelize(databaseUrl, {
+  dialect: "postgres",
+  logging: false, // Disable SQL logs in console
+});
 
 sequelize
-  .sync({ alter: true }) // `alter: true` updates the table structure if needed
-  .then(() => console.log("Database synchronized"))
-  .catch((err) => console.error("Error syncing database:", err));
+  .authenticate()
+  .then(() => console.log("✅ Database connection successful!"))
+  .catch((error) => console.error("❌ Database connection error:", error));
