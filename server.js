@@ -15,7 +15,7 @@ app.use(
   cors({
     origin:
       process.env.FRONTEND_URL ||
-      "https://gambling-platform-frontend.vercel.app/",
+      "https://gambling-platform-frontend.vercel.app",
     credentials: true,
   })
 );
