@@ -29,6 +29,8 @@ const syncModels = async () => {
       await sequelize.sync({ alter: true });
       console.log("Database synchronized");
     } else {
+      await sequelize.sync({ alter: false });
+
       // In production, don't auto-sync (use migrations instead)
       console.log("Database sync skipped in production");
     }
